@@ -1,0 +1,11 @@
+#pragma once
+
+#ifdef AUDIO_ENABLE
+    #define STARTUP_SONG SONG(STARTUP_SOUND)
+    #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND) }
+#endif
+
+#define MIDI_BASIC
+#define TAPPING_TERM 300
+#define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT

@@ -49,18 +49,24 @@ enum planck_keycodes {
 
 #define __L_1__ KC_TAB
 #define __L_2__ LCTL_T(KC_ESC)
-#define __L_3__ OSM(MOD_LSFT)
-#define __L_4__ OSM(MOD_LCTL)
+#define __L_3__ KC_LSFT
+#define __L_4__ KC_LSFT
 
 #define __R_1__ KC_BSPC
 #define __R_2__ KC_QUOT
-#define __R_3__ KC_ENT
+#define __R_3__ RSFT_T(KC_ENT)
 
-#define __MOD3__ OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT)
-#define __MOD4__ OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LGUI), OSM(MOD_LALT)
+#define __MOD3__ KC_LCTL, KC_LGUI, KC_LALT
+#define __MOD4__ KC_LSFT, KC_LCTL, KC_LGUI, KC_LALT
+#define __NAVM__ LALT_T(KC_LEFT), LGUI_T(KC_DOWN), LCTL_T(KC_UP), LSFT_T(KC_RIGHT)
 #define __NAV1__ KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT
 #define __NAV2__ KC_HOME, KC_PGDN, KC_PGUP, KC_END
 #define __NAV3__ KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+
+#define MY_PIPE S(KCNB)
+#define MY_STLD S(KCNH)
+#define MY_AT   KC_DQT
+#define MY_DQT  S(KC_2)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -75,33 +81,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* LOWER */
 [_LOWER] = GRID(
-    KC_GRV,  KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_PLUS, KC_BSPC,
-    KC_DEL,  KC_EQL , KC_SLSH, KC_COMM, KC_DOT , KC_COLN, KC_SCLN, KC_LPRN, KC_LBRC, KC_RBRC, KC_RPRN, KC_UNDS,
-    _______, KCNB   , S(KCNB), KCNH   , S(KCNH), KC_DQT , KC_QUOT, KC_LCBR, KC_LT  , KC_GT  , KC_RCBR, KC_TILD,
-    _______, _______, _______, _______, _______, _______, MOVE   , _______,              __NAV2__
+    KC_GRV , KC_EXLM, MY_DQT , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_PLUS, KC_DEL ,
+    _______, KCNB   , KC_SLSH, MY_STLD, KC_UNDS, KC_MINS, KC_EQL , KC_LPRN, KC_LBRC, KC_RBRC, KC_RPRN, KC_UNDS,
+    _______, KCNB   , MY_AT  , KCNH   , MY_PIPE, KC_PLUS, KC_QUOT, KC_LCBR, KC_LT  , KC_GT  , KC_RCBR, KC_TILD,
+    _______, _______, _______, _______, _______, MOVE   , MOVE   , _______,              __NAV2__
 ),
 
 /* RAISE */
 [_RAISE] = GRID(
-    _______, KC_F12 , KC_F11 , KC_F10 , KC_F9  , KC_LBRC, KC_RBRC, KC_7   , KC_8   , KC_9   , KC_MINS, KC_PLUS,
-    KC_DEL,  KC_F8  , KC_F7  , KC_F6  , KC_F5  , KC_LPRN, KC_RPRN, KC_4   , KC_5   , KC_6   , KC_EQL , _______,
-    _______, KC_F4  , KC_F3  , KC_F2  , KC_F1  , KC_DOT,  KC_0   , KC_1   , KC_2   , KC_3   , KC_SLSH, KC_ASTR,
-    _______, _______, _______, _______, _______, MOUSE  , _______, _______,              __NAV3__
+    KC_MUTE, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_EQL ,
+    _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_4   , KC_5   , KC_6   , KC_MINS, KC_PLUS,
+    _______, KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11,  KC_F12 , KC_1   , KC_2   , KC_3   , KC_SLSH, KC_ASTR,
+    _______, _______, _______, _______, _______, MOUSE  , MOUSE  , _______,              __NAV3__
 ),
 
 /* MOVE: Movement and window manager keys */
 [_MOVE] = GRID(
     _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END , _______, _______,
-                  __MOD4__            , _______, _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_TAB , _______,
+    _______,              __MOD4__             , _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_TAB , _______,
     _______, _______, _______, _______, _______, _______, KC_INS , KC_DEL , _______, _______, KC_BSPC, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
 /* MOUSE: Mouse control */
 [_MOUSE] = GRID(
-    _______, _______, _______, _______, _______, _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, _______, _______,
+    KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 ,
     _______, KC_ACL0, KC_ACL1, KC_ACL2, KC_BTN1, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN4, KC_BTN5,
-    _______, _______, _______, _______, _______, _______, KC_BTN3, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, KC_BTN3, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 

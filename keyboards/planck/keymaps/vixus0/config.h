@@ -6,6 +6,6 @@
 #endif
 
 #define MIDI_BASIC
-#define TAPPING_TERM 200
-#define RETRO_TAPPING
+#define TAPPING_TERM 400
+#define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT

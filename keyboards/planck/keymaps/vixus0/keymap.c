@@ -47,13 +47,13 @@ enum planck_keycodes {
 #define KCNB KC_NUBS
 #define KCNH KC_NUHS
 
-#define __L_1__ KC_TAB
+#define __L_1__ LALT_T(KC_TAB)
 #define __L_2__ LCTL_T(KC_ESC)
 #define __L_3__ KC_LSFT
 #define __L_4__ KC_LSFT
 
-#define __R_1__ KC_BSPC
-#define __R_2__ KC_QUOT
+#define __R_1__ LALT_T(KC_BSPC)
+#define __R_2__ LCTL_T(KC_QUOT)
 #define __R_3__ RSFT_T(KC_ENT)
 
 #define __MOD3__ KC_LCTL, KC_LGUI, KC_LALT

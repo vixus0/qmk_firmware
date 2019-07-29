@@ -68,14 +68,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = GRID(
     KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 ,
     _______,              __MOD4__             , _______,             __NAV1__              , _______, KC_DEL ,
-    _______, _______, _______, _______, _______, _______,             __NAV2__              , _______, KC_ENT ,
-    _______, _______, _______, _______, _______, KC_INS , KC_DEL , _______,              __NAV2__
+    _______, _______, _______, _______, _______, _______,             __NAV2__              , _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______,              __NAV2__
 ),
 
 [_RAISE] = GRID(
-    KC_GRV , KC_EXLM, MY_DQT , KC_NUHS, KC_DLR , KC_PERC, KC_CIRC, KC_7   , KC_8   , KC_9   , KC_0   , KC_MUTE,
-    _______, KC_LPRN, KC_RPRN, KC_NUBS, MY_PIPE, KC_AMPR, KC_ASTR, KC_4   , KC_5   , KC_6   , KC_MINS, KC_PLUS,
-    _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, MY_STLD, MY_QUID, KC_1   , KC_2   , KC_3   , KC_UNDS, KC_EQL ,
+    KC_GRV , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_MUTE,
+    _______, KC_EXLM, MY_DQT , KC_NUHS, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LBRC, KC_RBRC, KC_INS ,
+    _______, KC_NUBS, KC_COLN, KC_SCLN, MY_PIPE, MY_STLD, MY_QUID, KC_MINS, KC_PLUS, KC_EQL , KC_SLSH, _______,
     _______, _______, _______, _______, _______, _______, _______, _______,              __NAV3__
 ),
 

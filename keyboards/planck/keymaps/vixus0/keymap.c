@@ -23,6 +23,9 @@ enum planck_layers {
   _QWERTY,
   _LOWER,
   _RAISE,
+  _MOVEL,
+  _MOVER,
+  _PARAMS,
   _PLOVER,
   _ADJUST
 };
@@ -38,25 +41,46 @@ enum planck_keycodes {
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define MOVES MO(_MOVES)
+#define PARAMS MO(_PARAMS)
 
-#define __MOD3__ KC_LCTL, KC_LGUI, KC_LALT
-#define __MOD4__ KC_LSFT, KC_LCTL, KC_LGUI, KC_LALT
-
-#define __NAV1__ KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT
-#define __NAV2__ KC_HOME, KC_PGDN, KC_PGUP, KC_END
-#define __NAV3__ KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
-
-#define KCNB KC_NUBS
-#define KCNH KC_NUHS
-#define MY_PIPE S(KCNB)
-#define MY_STLD S(KCNH)
+#define MY_PIPE S(KC_NUBS)
+#define MY_STLD S(KC_NUHS)
 #define MY_AT   KC_DQT
 #define MY_DQT  S(KC_2)
 #define MY_QUID KC_HASH
-#define MY_ESC LGUI_T(KC_ESC)
 
+// LP1 = Left pinky first row
+// LF1 = Left fingers first row
+// LTH = Left thumb
+#define _QWERTY_LP1_ KC_ESC
+#define _QWERTY_LP2_ KC_TAB
+#define _QWERTY_LP3_ KC_BSLASH
+#define _QWERTY_LP4_ MOVEL
+
+#define _QWERTY_LF1_ KC_Q, KC_W, KC_E, KC_R, KC_T
+#define _QWERTY_LF2_ LSFT_T(KC_A), LCTL_T(KC_S), LGUI_T(KC_D), LALT_T(KC_F), KC_G
+#define _QWERTY_LF3_ KC_Z, KC_X, KC_C, KC_V, KC_B
+#define _QWERTY_LTH_ XXXXXXX, PARAMS, KC_LALT, LOWER, KC_INS
+
+#define _QWERTY_RP1_ KC_BSPC
+#define _QWERTY_RP2_ KC_QUOT
+#define _QWERTY_RP3_ KC_ENT
+#define _QWERTY_RP4_ MOVER
+
+#define _QWERTY_RF1_ KC_Y, KC_U, KC_I, KC_O, KC_P
+#define _QWERTY_RF2_ KC_H, LALT_T(KC_J), RGUI_T(KC_K), RCTL_T(KC_L), RSFT_T(KC_SCLN)
+#define _QWERTY_RF3_ KC_N, KC_M, KC_COMM, KC_DOT, KC_SLASH
+#define _QWERTY_RTH_ KC_SPC, RAISE, KC_MUTE, KC_VOLD, KC_VOLU
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+// [_QWERTY] = GRID(
+//     _QWERTY_LP1_, _QWERTY_LF1_, _QWERTY_RF1, _QWERTY_RP1_,
+//     _QWERTY_LP2_, _QWERTY_LF2_, _QWERTY_RF2, _QWERTY_RP2_,
+//     _QWERTY_LP3_, _QWERTY_LF3_, _QWERTY_RF3, _QWERTY_RP3_,
+//     _QWERTY_LP4_, _QWERTY_LTH_, _QWERTY_RTH, _QWERTY_RP4_
+// ),
 
 [_QWERTY] = GRID(
     KC_TAB , KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
